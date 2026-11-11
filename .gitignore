@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+.env
+
+# Legacy three-class report artifacts; the current model is binary
+reports/Informe_Final_MercadoScout.pdf
+reports/informe_final.html
+reports/ranking_prospectos.csv
+reports/figures/01_*.png
+reports/figures/02_*.png
+reports/figures/03_*.png
+reports/figures/04_*.png
+reports/figures/05_*.png
+reports/figures/06_*.png
+reports/figures/07_*.png
+reports/figures/08_*.png
+reports/figures/09_*.png
+reports/figures/10_*.png
+reports/figures/11_*.png

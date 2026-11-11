@@ -1,0 +1,68 @@
+{
+  "accuracy_train": 0.551530612244898,
+  "accuracy_test": 0.5276449206045533,
+  "balanced_accuracy": 0.5965743246266182,
+  "f1_elite": 0.44278943805010157,
+  "auc": 0.629634682820192,
+  "mejores_parametros": {
+    "clf__max_depth": 8,
+    "clf__max_features": "sqrt",
+    "clf__min_samples_leaf": 3,
+    "clf__n_estimators": 200
+  },
+  "mejor_f1_cv": 0.4493868418344479,
+  "umbral_p75_eur": 1800000.0,
+  "distribucion": {
+    "Estándar": 15583,
+    "Élite": 5324
+  },
+  "reporte": {
+    "Estándar": {
+      "precision": 0.8354489891866479,
+      "recall": 0.4561088295687885,
+      "f1-score": 0.5900713929935248,
+      "support": 3896.0
+    },
+    "Élite": {
+      "precision": 0.3164516129032258,
+      "recall": 0.7370398196844478,
+      "f1-score": 0.44278943805010157,
+      "support": 1331.0
+    },
+    "accuracy": 0.5276449206045533,
+    "macro avg": {
+      "precision": 0.5759503010449368,
+      "recall": 0.5965743246266182,
+      "f1-score": 0.5164304155218132,
+      "support": 5227.0
+    },
+    "weighted avg": {
+      "precision": 0.7032918229664001,
+      "recall": 0.5276449206045533,
+      "f1-score": 0.5525676084077785,
+      "support": 5227.0
+    }
+  },
+  "diagnostico_arboles": {
+    "arbol_sin_poda": {
+      "accuracy_train": 0.6503188775510204,
+      "accuracy_test": 0.5605509852687967,
+      "auc_test": 0.591528501366097,
+      "parametros": {
+        "max_depth": null,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2
+      }
+    },
+    "arbol_con_poda": {
+      "accuracy_train": 0.5228316326530612,
+      "accuracy_test": 0.4987564568586187,
+      "auc_test": 0.6216218796137594,
+      "parametros": {
+        "max_depth": 8,
+        "min_samples_leaf": 5,
+        "min_samples_split": 10
+      }
+    }
+  }
+}

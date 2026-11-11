@@ -1,0 +1,11 @@
+pandas
+numpy
+scikit-learn>=1.4
+matplotlib
+joblib
+SQLAlchemy
+PyMySQL
+python-dotenv
+fastapi
+uvicorn[standard]
+pydantic>=2

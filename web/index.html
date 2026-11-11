@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MercadoScout | Evaluación de talento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#121d30;--panel2:#17243a;--line:#263650;--text:#eef4ff;--muted:#91a2bd;--blue:#55a7ff;--cyan:#53d6cf;--gold:#f4c95d;--green:#39c98a;--red:#ff7777}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#162b49 0,transparent 42%),var(--bg);color:var(--text);font:15px "DM Sans",sans-serif;min-height:100vh}
+header{border-bottom:1px solid var(--line);background:#0b1220dd;backdrop-filter:blur(14px);position:sticky;top:0;z-index:5}
+.nav{max-width:1120px;margin:auto;padding:17px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font:800 19px Manrope,sans-serif;letter-spacing:-.5px}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--blue),#3471db);display:grid;place-items:center;color:#071426;font-weight:900}
+.brand span em{font-style:normal;color:var(--blue)}
+.status{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}.dot{width:8px;height:8px;border-radius:50%;background:var(--red)}.dot.ok{background:var(--green);box-shadow:0 0 12px #39c98a88}
+main{max-width:1120px;margin:46px auto;padding:0 24px 50px}
+.hero{margin-bottom:28px}.eyebrow{color:var(--cyan);font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:11px}
+h1{font:800 clamp(30px,5vw,46px) Manrope,sans-serif;letter-spacing:-1.8px;margin:10px 0 12px}.hero p{color:var(--muted);max-width:690px;line-height:1.7;margin:0}
+.grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:20px;align-items:start}
+.card{background:linear-gradient(160deg,#15233a,#101a2b);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 45px #0002;overflow:hidden}
+.card-head{padding:20px 22px;border-bottom:1px solid var(--line)}h2{font:700 17px Manrope,sans-serif;margin:0 0 5px}.sub{font-size:13px;color:var(--muted)}
+.card-body{padding:22px}.field{margin-bottom:17px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:8px;color:#d7e4f8}
+input,select{width:100%;height:46px;border:1px solid #31435e;border-radius:10px;background:#0d1728;color:var(--text);padding:0 13px;font:inherit;outline:none}
+input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #55a7ff20}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.hint{font-size:11px;color:var(--muted);margin-top:6px}
+button{border:0;cursor:pointer;font:700 14px "DM Sans",sans-serif}.submit{width:100%;height:48px;border-radius:11px;background:linear-gradient(100deg,#55a7ff,#53d6cf);color:#071426;margin-top:5px;transition:.2s}.submit:hover{filter:brightness(1.08);transform:translateY(-1px)}.submit:disabled{opacity:.6;cursor:wait;transform:none}
+.error{color:var(--red);font-size:13px;min-height:18px;margin-top:12px}
+.empty{min-height:310px;display:grid;place-items:center;text-align:center;padding:32px;color:var(--muted)}.empty-icon{width:58px;height:58px;border:1px solid var(--line);border-radius:18px;display:grid;place-items:center;font-size:25px;margin:0 auto 15px;background:#1a2b44}
+.result{padding:22px;display:none}.result-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.result-top h3{font:800 25px Manrope,sans-serif;margin:0}.pill{padding:7px 12px;border-radius:30px;font-size:12px;font-weight:800;letter-spacing:.5px}.elite{background:#f4c95d20;color:var(--gold);border:1px solid #f4c95d55}.standard{background:#55a7ff20;color:#8dc4ff;border:1px solid #55a7ff55}
+.confidence{margin:22px 0 18px;padding:18px;border-radius:14px;background:#0c1728;border:1px solid var(--line)}.confidence-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;font-size:13px;color:var(--muted)}.confidence-row strong{font:800 26px Manrope,sans-serif;color:var(--text)}
+.track{height:12px;background:#293850;border-radius:20px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:20px;transition:width .7s ease}
+.probs{display:grid;gap:14px}.prob-head{display:flex;justify-content:space-between;font-size:13px;margin-bottom:7px}.prob-head b{font-weight:800}.track.small{height:7px}.fill.elite-fill{background:var(--gold)}.fill.standard-fill{background:var(--blue)}
+.note{border-top:1px solid var(--line);margin-top:20px;padding-top:15px;color:var(--muted);font-size:12px;line-height:1.6}
+.info{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:14px}.info article{padding:17px;border:1px solid var(--line);border-radius:14px;background:#101b2d}.info strong{display:block;font:800 20px Manrope,sans-serif;margin-bottom:5px}.info span{color:var(--muted);font-size:12px;line-height:1.5}
+footer{text-align:center;color:#71829d;font-size:12px;padding:0 20px 30px}
+@media(max-width:800px){main{margin-top:32px}.grid{grid-template-columns:1fr}.empty{min-height:230px}}
+@media(max-width:480px){.nav{padding:13px 17px}main{padding:0 16px 35px}.two{grid-template-columns:1fr;gap:0}.card-body,.result{padding:18px}.status{font-size:11px}.info{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="nav">
+  <div class="brand"><div class="logo">MS</div><span>Mercado<em>Scout</em></span></div>
+  <div class="status"><i class="dot" id="api-dot"></i><span id="api-status">Conectando con la API…</span></div>
+</div></header>
+<main>
+  <section class="hero">
+    <div class="eyebrow">Plataforma de scouting · Analítica deportiva</div>
+    <h1>Identifica el talento.<br><span style="color:var(--blue)">Decide con datos.</span></h1>
+    <p>Evalúa perfiles de futbolistas mediante un modelo de Machine Learning. El sistema estima si un jugador pertenece al grupo <b>Élite</b> (Top 25% del valor de mercado) o al grupo <b>Estándar</b>.</p>
+  </section>
+  <section class="grid">
+    <div class="card">
+      <div class="card-head"><h2>Perfil del jugador</h2><div class="sub">Ingresa los datos para generar la predicción</div></div>
+      <div class="card-body">
+        <form id="player-form">
+          <div class="field"><label for="nombre">Nombre del jugador</label><input id="nombre" maxlength="80" placeholder="Ej. Juan Pérez" value="Nuevo prospecto"></div>
+          <div class="field"><label for="posicion">Posición de juego</label>
+            <select id="posicion" required>
+              <option value="Goalkeeper">Portero</option><option value="Defender">Defensa</option>
+              <option value="Midfield" selected>Centrocampista</option><option value="Attack">Delantero</option>
+            </select>
+          </div>
+          <div class="two">
+            <div class="field"><label for="edad">Edad</label><input id="edad" type="number" min="15" max="45" placeholder="Ej. 21"><div class="hint">Entre 15 y 45 años</div></div>
+            <div class="field"><label for="estatura">Estatura (cm)</label><input id="estatura" type="number" min="150" max="210" placeholder="Ej. 178"><div class="hint">Entre 150 y 210 cm</div></div>
+          </div>
+          <button class="submit" id="predict-btn" type="submit">Analizar jugador&nbsp; →</button>
+          <div class="error" id="error" role="alert"></div>
+        </form>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h2>Resultado del análisis</h2><div class="sub">Clasificación binaria del modelo Random Forest</div></div>
+      <div class="empty" id="empty"><div><div class="empty-icon">⌁</div><b>Esperando un perfil</b><p>Completa los datos y selecciona<br>“Analizar jugador”.</p></div></div>
+      <div class="result" id="result" aria-live="polite">
+        <div class="result-top"><h3 id="player-name">Jugador</h3><span class="pill" id="category">—</span></div>
+        <div class="confidence">
+          <div class="confidence-row"><span>Probabilidad de pertenecer a Élite</span><strong id="elite-pct">0%</strong></div>
+          <div class="track"><div class="fill" id="elite-progress"></div></div>
+        </div>
+        <div class="probs">
+          <div><div class="prob-head"><b>Élite</b><span id="elite-value">0%</span></div><div class="track small"><div class="fill elite-fill" id="elite-bar"></div></div></div>
+          <div><div class="prob-head"><b>Estándar</b><span id="standard-value">0%</span></div><div class="track small"><div class="fill standard-fill" id="standard-bar"></div></div></div>
+        </div>
+        <div class="note" id="result-note"></div>
+      </div>
+    </div>
+  </section>
+  <section class="info">
+    <article><strong>Élite · Clase 1</strong><span>Jugador ubicado en el 25% superior del valor de mercado de la muestra de entrenamiento.</span></article>
+    <article><strong>Estándar · Clase 0</strong><span>Jugador ubicado por debajo del umbral del percentil 75 definido durante el entrenamiento.</span></article>
+  </section>
+</main>
+<footer>MercadoScout · Ecosistema analítico de scouting deportivo</footer>
+<script>
+const API = location.protocol === "file:" ? "http://127.0.0.1:8001" : "";
+const $ = id => document.getElementById(id);
+const money = value => new Intl.NumberFormat("es-CO",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(value);
+async function checkAPI(){
+  try{
+    const response=await fetch(`${API}/salud`); if(!response.ok) throw new Error();
+    const data=await response.json();
+    $("api-dot").classList.add("ok"); $("api-status").textContent=`API conectada · ${data.modelo}`;
+  }catch{
+    $("api-status").textContent="API sin conexión";
+    $("error").textContent="No se pudo conectar con FastAPI. Inicia el servidor con: uvicorn api:app --reload --port 8001";
+  }
+}
+$("player-form").addEventListener("submit",async event=>{
+  event.preventDefault(); $("error").textContent="";
+  const edad=$("edad").value, estatura=$("estatura").value;
+  const payload={
+    nombre:$("nombre").value.trim()||"Jugador sin nombre",
+    posicion:$("posicion").value,
+    edad:edad===""?null:Number(edad),
+    estatura_cm:estatura===""?null:Number(estatura)
+  };
+  const button=$("predict-btn"); button.disabled=true; button.textContent="Analizando…";
+  try{
+    const response=await fetch(`${API}/predict`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+    const data=await response.json();
+    if(!response.ok) throw new Error(Array.isArray(data.detail)?data.detail.map(x=>x.msg).join(", "):(data.detail||"No fue posible generar la predicción."));
+    renderResult(data);
+  }catch(error){$("error").textContent=error.message;}
+  finally{button.disabled=false;button.textContent="Analizar jugador  →";}
+});
+function renderResult(data){
+  $("empty").style.display="none"; $("result").style.display="block";
+  $("player-name").textContent=data.nombre;
+  $("category").textContent=data.prediccion;
+  $("category").className="pill "+(data.clase===1?"elite":"standard");
+  $("elite-pct").textContent=`${data.probabilidad_elite.toFixed(1)}%`;
+  $("elite-value").textContent=`${data.probabilidades["Élite"].toFixed(1)}%`;
+  $("standard-value").textContent=`${data.probabilidades["Estándar"].toFixed(1)}%`;
+  $("elite-progress").style.width=`${data.probabilidad_elite}%`;
+  $("elite-bar").style.width=`${data.probabilidades["Élite"]}%`;
+  $("standard-bar").style.width=`${data.probabilidades["Estándar"]}%`;
+  const faltantes=data.valores_imputados.length?` No se suministró ${data.valores_imputados.join(" y ")}; el pipeline aplicó su imputación.`:"";
+  $("result-note").textContent=`Confianza de la clasificación: ${data.confianza.toFixed(1)}%. Umbral Top 25% utilizado al entrenar: ${money(data.umbral_referencia_eur)}.${faltantes} La probabilidad es una estimación del modelo, no una garantía de rendimiento deportivo.`;
+}
+checkAPI();
+</script>
+</body>
+</html>
